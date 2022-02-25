@@ -6,26 +6,36 @@
     <title>HOME</title>
   </head>
   <body>
-      <h1>Hello</h1>
-    <!-- <h3>Source URL</h3>
-    <p id="sourceurl"></p>
-    <h3>Parameters</h3>
-    <ul id="params"></ul> -->
+      <h1>UniversalLink / AppLink Test</h1>
+      <h2>Params</h2>
+      <ul id="params"></ul>
+      <a href="https://link.porthej.com" id="link">광고주 App/Web으로 이동</a>
     <script type="text/javascript">
-    //   window.onload = function() {
-    //     document.getElementById("sourceurl").innerHTML = window.location;
 
-    //     const urlParams = new URLSearchParams(window.location.search);
-    //     // const message = urlParams.get("message")
-        
-    //     var ul = document.getElementById("params")
-    //     urlParams.forEach(function(value, key) {
-    //       var li = document.createElement("li");
-    //       var text = document.createTextNode(key + " = " + value);
-    //       li.appendChild(text);
-    //       ul.appendChild(li);
-    //     })
-    //   }
+        function makeCID() {
+            return 'xxxxxxxxxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        window.onload = function() {
+            const timestamp = Math.floor(+ new Date() / 1000);
+            const clickId = makeCID();
+
+            var ul = document.getElementById("params")
+
+            var liTS = document.createElement("li");
+            liTS.appendChild(document.createTextNode("timestamp = " + timestamp));
+            ul.appendChild(liTS);
+
+            var liCID = document.createElement("li");
+            liCID.appendChild(document.createTextNode("clickID = " + clickId));
+            ul.appendChild(liCID);
+
+            const linkStr = "https://link.porthej.com?ts=" + timestamp + "&cid=" + clickId;
+            document.getElementById("link").href = linkStr
+      }
     </script>
   </body>
 </html>
