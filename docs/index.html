@@ -6,10 +6,14 @@
     <title>HOME</title>
   </head>
   <body>
-      <h1>UniversalLink / AppLink Test</h1>
-      <h2>Params</h2>
+      <h2>UniversalLink / AppLink Test</h2>
+      <h3>Params</h3>
       <ul id="params"></ul>
       <a href="https://link.porthej.com" id="link">광고주 App/Web으로 이동</a>
+
+      <hr />
+      <h3>Received Params</h3>
+      <ul id="received"></ul>
     <script type="text/javascript">
 
         function makeCID() {
@@ -35,6 +39,19 @@
 
             const linkStr = "https://link.porthej.com?ts=" + timestamp + "&cid=" + clickId;
             document.getElementById("link").href = linkStr
+
+            // Received Parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has("cid")) {
+                var ul = document.getElementById("received")
+                urlParams.forEach(function(value, key) {
+                    var li = document.createElement("li");
+                    var text = document.createTextNode(key + " = " + value);
+                    li.appendChild(text);
+                    ul.appendChild(li);
+                })
+            }
+
       }
     </script>
   </body>
