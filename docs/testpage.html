@@ -27,6 +27,7 @@
     <ul>
         <li><span>Click ID : </span><span id="clickid"></span></li>
         <li><span>Click Timestamp : </span><span id="clickts"></span></li>
+        <li><span>Click URL : </span><span id="clickurl"></span></li>
     </ul>
 
     <script type="text/javascript">
@@ -39,15 +40,16 @@
 
         const timestamp = Math.floor(+ new Date() / 1000);
         const clickId = makeCID();
+        const url = "https://hasher.porthej.com?source=testconversion&clickid=" + clickId + "&timestamp=" + timestamp;
 
         function mylink() {
-            var url = "https://hasher.porthej.com?source=testconversion&clickid=" + clickId + "&timestamp=" + timestamp;
             window.location = url
         }
 
         window.onload = function() {
             document.getElementById('clickid').innerText = clickId
             document.getElementById('clickts').innerText = timestamp
+            document.getElementById('clickurl').innerText = url
         }
     </script>
   </body>
